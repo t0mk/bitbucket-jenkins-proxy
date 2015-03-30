@@ -4,4 +4,4 @@ if [ "$1" == "dyn" ]; then
 else
     CGO_ENABLED=0 go build -a -ldflags -d
 fi
-mv bitbucket_jenkins_proxy /bitbucket_jenkins_proxy
+mv bitbucket-jenkins-proxy /bitbucket-jenkins-proxy
