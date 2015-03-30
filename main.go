@@ -77,8 +77,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if runJob {
 		log.Println("we will attempt to run the job")
 		client := &http.Client{}
+		auth := r.Header.Get("Authorization")
 		newUrl := jenkinsUrl + "/job/" + job + "/build?token=" + authToken
 		newRequest, err := http.NewRequest("POST", newUrl, bytes.NewBuffer(payload))
+		log.Println("AUTH:", auth)
+		if len(auth) > 0 {
+			newRequest.Header.Set("Authorization", auth)
+		}
 		resp, err := client.Do(newRequest)
 		if err != nil {
 			httpError(w, "error while forwarding the request: "+err.Error())
