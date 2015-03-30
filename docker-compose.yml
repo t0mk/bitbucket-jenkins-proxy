@@ -1,0 +1,7 @@
+proxy:
+  image: t0mk/bitbucket-jenkins-proxy
+  ports:
+    - "8081:8081"
+  environment:
+    PROXY_PORT: 8081
+    JENKINS_URL: 'http://your.jenkins.net:8080'

@@ -1,7 +1,6 @@
-FROM golang:1.3-cross
-ADD . /go/src/github.com/t0mk/bitbucket-jenkins-proxy
-WORKDIR /go/src/github.com/t0mk/bitbucket-jenkins-proxy
-ENV GOOS linux
-ENV GOARCH amd64
-RUN go get
-ENTRYPOINT ["/go/src/github.com/t0mk/bitbucket-jenkins-proxy/make.sh"]
+FROM busybox
+
+ADD bitbucket-jenkins-proxy /bitbucket-jenkins-proxy
+RUN chmod +x /bitbucket-jenkins-proxy
+CMD ["/bitbucket-jenkins-proxy"]
+
